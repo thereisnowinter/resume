@@ -1,0 +1,40 @@
+
+
+.loading {
+	height: 300px;
+	width: 300px;
+	/*border: 1px solid red;*/
+	position: relative;
+}
+
+.loading::before,.loading::after{
+	content: '';
+	height: 0px;
+	width: 0px;
+	background: black;
+	position: absolute;
+	border-radius: 50%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	animation: move 1.5s linear infinite;
+}
+
+.loading::after{
+	animation-delay: 0.75s;
+}
+
+@keyframes move {
+	0% {
+		width: 0px;
+		height: 0px;
+		opacity: 1;
+	}
+	100% {
+		width: 100px;
+		height: 100px;
+		opacity: 0;
+	}
+}

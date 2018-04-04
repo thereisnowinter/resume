@@ -126,7 +126,6 @@ hr {
 }
 
 .userCard {
-	xborder: 1px red solid;
 	max-width: 940px;
 	margin-left: auto;
 	margin-right: auto;
@@ -199,11 +198,9 @@ hr {
 .userCard>footer.media {
 	background-color: rgb(232,103,107);
 	text-align: center;
-	xpadding:20px 0;
 }
 
 .userCard>footer.media>a {
-	xborder: 1px black solid;
 	display: inline-block;
 	width: 40px;
 	line-height: 30px;
@@ -220,7 +217,6 @@ hr {
 	width: 30px;
 	height: 30px;
 	fill: white;
-	xmargin: 0 16px;
 	vertical-align: top;
 }
 
@@ -297,7 +293,6 @@ section.skills>ol>li {
 	float: left;
 	width: 48%;
 	box-sizing: border-box;
-	xpadding-right: 40px;
 }
 
 section.skills>ol>li:nth-child(even) {
@@ -306,7 +301,6 @@ section.skills>ol>li:nth-child(even) {
 
 section.skills .progressBar {
 	height: 5px;
-	xborder: 1px rgb(232,103,107) solid;
 	background-color: rgb(250,225,225);
 	border-radius: 2px;
 	margin: 4px 0px 40px;
@@ -333,7 +327,6 @@ section.portfolio>nav {
 
 section.portfolio>nav>ol {
 	display: inline-block;
-	xborder:1px red solid;
 	margin: 0 auto;
 	vertical-align: top;
 }
@@ -354,7 +347,6 @@ section.portfolio>nav>div {
 }
 
 section.portfolio>nav>.bar {
-	xborder:1px red solid;
 	height: 5px;
 	background-color: white;
 	margin-top: 5px;
@@ -367,7 +359,6 @@ section.portfolio>nav>.bar {
 section.portfolio>nav>.bar>.bar-inner {
 	height: 100%;
 	background: rgb(232,103,107);
-	xwidth: 10%;
 	border-radius: 2px;
 	transition: all 0.3s;
 }

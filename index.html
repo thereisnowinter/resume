@@ -45,17 +45,17 @@
 		
 			<nav class="menu">
 				<ul class="clearfix">
-					<li><a href="">关于</a></li>
-					<li><a href="">技能</a></li>
-					<li class="menuTrigger">
-						<a href="" >作品</a>
+					<li><a href="#siteAbout">关于</a></li>
+					<li><a href="#siteSkills">技能</a></li>
+					<li>
+						<a href="#siteProjects" >作品</a>
 						<ul class="subMenu">
 							<li>作品集1</li>
 							<li>作品集2</li>
 							<li>作品集3</li>
 						</ul>
 					</li>
-					<li class="menuTrigger">
+					<li>
 						<a href="">博客</a>
 						<ul class="subMenu">
 							<li>博客1</li>
@@ -78,7 +78,7 @@
 		</div>
 	</div>
 	<main>
-		<div class="userCard">
+		<div id="siteAbout" class="userCard">
 			<div class="pictureAndText clearfix">
 				<div class="picture">
 					<img src="./img/avatar.jpg" alt="头像">
@@ -150,7 +150,7 @@
 		</p>
 	</main>
 
-	<section class="skills">
+	<section id="siteSkills" class="skills">
 		<h2>技能</h2>
 		<ol class="clearfix">
 			<li>
@@ -222,7 +222,7 @@
 			
 		</ol>
 	</section>
-	<section class='portfolio'>
+	<section id="siteProjects" class='portfolio'>
 		<h2>作品集</h2>
 		<nav>
 			<ol class="clearfix">
@@ -262,8 +262,8 @@
 			</div>
 		</div>
 	</section>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 	<script>
-		// siteWelcome.classList.remove('active')
 		var loading = document.querySelector('#siteWelcome')
 		setTimeout(function() {
 			loading.classList.remove('active')
@@ -286,7 +286,38 @@
 			liTags[i].onmouseleave = function(event) {
 				event.currentTarget.classList.remove('active')					
 			}
+		}
 
+		// Setup the animation loop.
+		function animate(time) {
+		    requestAnimationFrame(animate);
+		    TWEEN.update(time);
+		}
+		requestAnimationFrame(animate);
+
+
+		let aTags = document.querySelectorAll('nav.menu>ul>li>a')
+		for (let i = 0; i < aTags.length; i++) {
+			aTags[i].onclick = function(event) {
+				event.preventDefault()
+				let a = event.currentTarget
+				let href = a.getAttribute('href')
+				let element = document.querySelector(href)
+				let top = element.offsetTop
+				let currentTop = window.scrollY
+				let targetTop = top - 60
+				let s = targetTop - currentTop
+				let t = Math.abs(s / 100 * 300)
+				if (t > 500) {t = 500}
+				let coords = {y: currentTop }; 
+				let tween = new TWEEN.Tween(coords)
+				        .to({y: targetTop }, t) 
+				        .easing(TWEEN.Easing.Quadratic.InOut) 
+				        .onUpdate(function() { 
+				            window.scrollTo(0, coords.y)
+				        })
+				        .start(); 
+			}
 		}
 
 

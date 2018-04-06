@@ -78,7 +78,7 @@
 		</div>
 	</div>
 	<main>
-		<div id="siteAbout" class="userCard">
+		<div data-one id="siteAbout" class="userCard">
 			<div class="pictureAndText clearfix">
 				<div class="picture">
 					<img src="./img/avatar.jpg" alt="头像">
@@ -150,7 +150,7 @@
 		</p>
 	</main>
 
-	<section id="siteSkills" class="skills">
+	<section data-one id="siteSkills" class="skills">
 		<h2>技能</h2>
 		<ol class="clearfix">
 			<li>
@@ -158,7 +158,7 @@
 					HTML5 &amp; CSS3
 				</h3>
 				<div class="progressBar">
-					<div class="progress">
+					<div class="progress" style="width:30%">
 						
 					</div>
 					
@@ -169,7 +169,7 @@
 					JavaScript
 				</h3>
 				<div class="progressBar">
-					<div class="progress">
+					<div class="progress" style="width:70%">
 						
 					</div>
 					
@@ -180,7 +180,7 @@
 					jQuery
 				</h3>
 				<div class="progressBar">
-					<div class="progress">
+					<div class="progress" style="width:60%">
 						
 					</div>
 					
@@ -202,7 +202,7 @@
 					React
 				</h3>
 				<div class="progressBar">
-					<div class="progress">
+					<div class="progress" style="width:80%">
 						
 					</div>
 					
@@ -222,7 +222,7 @@
 			
 		</ol>
 	</section>
-	<section id="siteProjects" class='portfolio'>
+	<section data-one id="siteProjects" class='portfolio'>
 		<h2>作品集</h2>
 		<nav>
 			<ol class="clearfix">
@@ -269,12 +269,45 @@
 			loading.classList.remove('active')
 		}, 1000)
 
+		let specialTags = document.querySelectorAll('[data-one]')
+		for (let i = 0; i < specialTags.length; i++) {
+			specialTags[i].classList.add('offSet')
+		}
+		function findClosest() {
+			//miniIndex 是离屏幕最近的元素,假设是第一位元素
+			let miniIndex = 0
+			for (let i = 1; i < specialTags.length; i++) {
+				if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[miniIndex].offsetTop - window.scrollY)) {
+					miniIndex = i
+				}
+
+				specialTags[miniIndex].classList.remove('offSet')
+			}
+
+			for (let i = 0; i < specialTags.length; i++) {
+				specialTags[i].classList.remove('highLight')
+
+			}
+
+			let id = specialTags[miniIndex].id
+			let a = document.querySelector('a[href="#' + id + '"]')
+			let li = a.parentNode
+			let brothersAndMe = li.parentNode.children
+			for (let i = 0; i < brothersAndMe.length; i++) {
+				brothersAndMe[i].classList.remove('highLight')
+			}
+			li.classList.add('highLight')
+		}
+
 		window.onscroll = function(event) {
 			if(window.scrollY > 0) {
 				topNavBar.classList.add('sticky')
 			} else {
 				topNavBar.classList.remove('sticky')
 			}
+
+			findClosest()
+			
 		}
 
 		let liTags = document.querySelectorAll('nav.menu>ul>li')

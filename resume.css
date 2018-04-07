@@ -68,6 +68,7 @@ hr {
 }
 
 .topNavBar .subMenu {
+	cursor: pointer;
 	color: white;
 	display: none;
 	position: absolute;
@@ -127,11 +128,8 @@ hr {
 	border-bottom: 3px transparent solid;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	/*padding-right: 18px;*/
 	display: block;
 	position: relative;
-	/*border: 2px grey solid;*/
-
 }
 
 .topNavBar nav>ul>li.active>a::after,
@@ -145,7 +143,6 @@ hr {
 	left: 0;
 	background-color: rgb(225,100,104);
 	animation: menuSlide 0.5s;
-	/*border-bottom: 3px rgb(225,100,104) solid;*/
 }
 
 @keyframes menuSlide {
